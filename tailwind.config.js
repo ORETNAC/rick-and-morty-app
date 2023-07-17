@@ -12,6 +12,13 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      height: {
+        'header': '3.75rem',
+        'logo': '12.5rem' // Define el tamaño de altura personalizado que necesitas
+      },
+      width:{
+        'logo':'37.5rem'
+      }
     },
   },
   plugins: [],
