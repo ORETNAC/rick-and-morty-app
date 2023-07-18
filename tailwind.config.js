@@ -14,10 +14,12 @@ module.exports = {
       },
       height: {
         'header': '3.75rem',
-        'logo': '12.5rem' // Define el tamaño de altura personalizado que necesitas
+        'logo': '12.5rem', // Define el tamaño de altura personalizado que necesitas
+        'max-h-card': '15.25rem'
       },
       width:{
-        'logo':'37.5rem'
+        'logo':'37.5rem',
+        'max-w-card': '15rem'
       }
     },
   },
