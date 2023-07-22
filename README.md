@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Common commands
+
+- `npm install @reduxjs/toolkit`
+- `npm install react-redux -E`
+- `npm install axios`
+
+## Notes
+
+- Version Lens (Ext)
+
 ## Getting Started
 
 First, run the development server:

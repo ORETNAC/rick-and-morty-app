@@ -1,33 +1,72 @@
-
+import { getChars } from "@/store/character";
 import Cards from "../components/Cards/Cards.js";
 import Filter from "../components/Filter/Filter.js";
 import Search from "../components/Search/Search.js";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+
+let info;
+let results = [];
+let tempFix = 0;
 
 export default function Home() {
-
-  let [pageNumber, setPageNumer] = useState(1);
+{/** 
+  let [pageNumber, setPageNumber] = useState(1);
   let [fetchData, updateFetchData] = useState([]);
-  let [Serch, setSerch] = useState('');
-  let [Status, setStatus] = useState('')
-  let [Species, setSpicies] = useState('robot')//'alien' 'human' 'humanoid' 'robot'
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${Serch}&status=${Status}&species=${Species}`;
+  let [allCards, setAllCards] = useState([]);
 
-  const loadMore = () => {
-    setPageNumer(x => x + 1);
-  }
+  let [search, setSearch] = useState('');
+  let [status, setStatus] = useState('')
+  let [species, setSpicies] = useState('')//'alien' 'human' 'humanoid' 'robot' 'animal''Cronenberg' 'unknown' 'Mythological Creature' 'Poopybutthole' 'Disease'
+  let [gender, setGender] = useState('');//'genderless' 'male' 'female' 'unknown'
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&species=${species}&gender=${gender}`;
+*/}
 
+
+
+
+
+
+  ////////////////////////////////////////////////////////////////
+
+  {/*
   useEffect(() => {
     (async function () {
       let data = await fetch(api).then(res => res.json());
-      //console.log(data.results);
-      console.log(fetchData);
       updateFetchData(data);
+      results = data.results;
+
+      if (tempFix < 1) {
+        tempFix++;
+        //console.log('----------------TempFix----------------:', tempFix);
+      } else {
+        setAllCards(prevCards => [...prevCards, ...results]);
+      }
+
     })();
   }, [api]);
+*/}
+  ///////////////////////////////////////////////////////////////
 
-  let { info, results } = fetchData;
-  console.log(fetchData);
+  const { isLoading, page, pokelist = [] } = useSelector(state => state.characters)
+
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getChars());
+  }, [])
+
+
+
+  // info = fetchData.info;
+
+  // console.log('AllCards', allCards)
+  // console.log('results', results)
+  // console.log('info', info)
+
+
 
 
   return (
@@ -50,16 +89,24 @@ export default function Home() {
           </div>
 
           <section className="mt-8 grid grid-cols-4 justify-center gap-4">
-            <Search setSerch={setSerch}></Search>
+            {/* <Search setSearch={setSearch} pageNumber={setPageNumber}></Search> */}
             <Filter> </Filter>
           </section>
 
 
+
           <section className='mt-8 grid grid-cols-4 justify-center gap-4 '>
-            <Cards result={results} />
+
+            {/* {!isLoading ? <div className=''><img src="/loading.svg" alt="" /></div> : <Cards />} */}
+
+
+            <Cards />
+
+
+
           </section>
 
-          <button onClick={loadMore}>Load More</button>
+
         </main>
         <footer>
 
