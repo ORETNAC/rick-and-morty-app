@@ -11,7 +11,7 @@ let results = [];
 let tempFix = 0;
 
 export default function Home() {
-{/** 
+  {/** 
   let [pageNumber, setPageNumber] = useState(1);
   let [fetchData, updateFetchData] = useState([]);
   let [allCards, setAllCards] = useState([]);
@@ -49,13 +49,13 @@ export default function Home() {
 */}
   ///////////////////////////////////////////////////////////////
 
-  const { isLoading, page, pokelist = [] } = useSelector(state => state.characters)
+  const { page, charList = [], search, finalPage, species } = useSelector(state => state.characters)
 
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getChars());
+    dispatch(getChars(page + 1, charList, search, finalPage, species));
   }, [])
 
 
@@ -89,8 +89,8 @@ export default function Home() {
           </div>
 
           <section className="mt-8 grid grid-cols-4 justify-center gap-4">
-            {/* <Search setSearch={setSearch} pageNumber={setPageNumber}></Search> */}
-            <Filter> </Filter>
+            <Search></Search>
+            <Filter></Filter>
           </section>
 
 
