@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'detail-name': '#081F32'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -15,11 +18,13 @@ module.exports = {
       height: {
         'header': '3.75rem',
         'logo': '12.5rem', // Define el tamaño de altura personalizado que necesitas
-        'max-h-card': '15.25rem'
+        'max-h-card': '15.25rem',
+        'detail-img': '18.75rem'
       },
-      width:{
-        'logo':'37.5rem',
-        'max-w-card': '15rem'
+      width: {
+        'logo': '37.5rem',
+        'max-w-card': '15rem',
+        'detail-img': '18.75rem'
       }
     },
   },

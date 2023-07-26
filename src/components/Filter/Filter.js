@@ -1,30 +1,37 @@
-import { setSpecies, setGender, setStatus } from "@/store/character";
+import { setSpecies, setGender, setStatus, clearList, getChars } from "@/store/character";
 
 import PropTypes from 'prop-types';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+
 const Filters = () => {
     const dispatch = useDispatch();
+    const { page, charList = [], isLoading, search, finalPage ,species, gender,status } = useSelector(state => state.characters)
 
     const speciesChangeValue = (event) => {
         console.log(event.target.value)
+        dispatch(clearList());
         dispatch(setSpecies({ species: event.target.value }));
+        //dispatch(getChars( page,charList, isLoading,  ));
+        //dispatch(getChars(page + 1, charList, search, finalPage, species, gender, status));
     }
 
     const genderChangeValue = (event) => {
         console.log(event.target.value)
         dispatch(setGender({ gender: event.target.value }));
+        dispatch(clearList());
+        //dispatch(getChars({ }));
     }
 
     const statusChangeValue = (event) => {
         console.log(event.target.value)
         dispatch(setStatus({ status: event.target.value }));
+        dispatch(clearList());
+        //dispatch(getChars({ }));
     }
-
-
 
     return (
         <>
-
 
             <select onChange={speciesChangeValue} placeholder='Species' id="species" className='className="flex justify-center w-max-w-card border border-gray-500 rounded-md h-14 items-center"'>
                 <option value="">Species:</option>

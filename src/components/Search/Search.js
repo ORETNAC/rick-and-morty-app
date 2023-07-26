@@ -16,9 +16,7 @@ const Search = () => {
 
     const clicked = (barRef) => {
         // console.log('1', page)
-
         console.log('soy un onclick', barRef.current.value)
-
         //dispatch(clearList())
         // console.log('2', page)
         //console.log(a.target.value)
@@ -31,45 +29,48 @@ const Search = () => {
 
 
     const inputChange = (a) => {
-
         //console.log('valor de a:', a.target.value)
-        console.log('Soy un Onchange', a.target.value)
-
-        //dispatch(clearChars());
-
-
-        //dispatch(clearChars());
         dispatch(clearList())
         dispatch(setSearch({ search: a.target.value }));
+        console.log('inputChange',search)
+        dispatch(getChars())
+        //dispatch(getChars(page, charList, search))
+
+        //dispatch(getChars(page, charList, a.target.value))
+
+        //dispatch(clearChars());
+        //dispatch(clearChars());
+
         //dispatch(getChars(page, charList, a.target.value))
         //clicked();////////////////////////////////////////////////////
-
         //console.log(a.target.value)
         // dispatch(getChars(page, charList))
     }
 
-    const keyUp = (a) => {
-        // console.log('1', page)
+    // const keyUp = (a) => {
+    //     const key = a.key.toLowerCase();
+    //     const isLetter = /^[a-z]$/i.test(key);
+    //     if (search !== '' && isLetter && !a.ctrlKey) {
+    //         //dispatch(getChars(page, charList, search))
+    //         // dispatch(getChars({pageNumber:page, charList:charList,search}))
+    //     } else {
+    //         dispatch(clearList())
+    //         console.log('not a lett')
+    //     }
+    //     // console.log('1', page)
+    //     //console.log('soy un keyUp', a)
+    //     ////////////////////////////////////
+    //     //dispatch(clearList())
+    //     // console.log('2', page)
+    //     //console.log(a.target.value)
+    //     //dispatch(setSearch({ search: barRef.current.value }))
+    //     //console.log('soy un keyDown',a.current.value);
+    //     //dispatch(setSearch({ search: a.target.value }));
+    //     // dispatch(clearChars())
+    //     /////////////////////////////////////
 
-        console.log('soy un keyUp', a)
 
-        //dispatch(clearList())
-        // console.log('2', page)
-        //console.log(a.target.value)
-        //dispatch(setSearch({ search: barRef.current.value }))
-
-        // console.log('soy un keyDown',a.target.value);
-        //console.log('soy un keyDown',a.current.value);
-        //dispatch(setSearch({ search: a.target.value }));
-
-
-        // dispatch(clearChars())
-        if (search !== '') {
-            
-            dispatch(getChars(page, charList, search))
-        }
-
-    }
+    // }
 
 
     return (
@@ -85,7 +86,7 @@ const Search = () => {
                     }
                     }
                 >
-                    Clean
+                    <AiOutlineSearch className="text-gray-500"></AiOutlineSearch>
                 </button>
 
                 {/* <button
@@ -100,14 +101,14 @@ const Search = () => {
                 <input
                     ref={barRef}
                     onChange={inputChange}
-                    onKeyUp={(a) => {
-                        //a.preventDefault();
-                        // clicked({/*barRef*/ });
-                        
-                        // keyUp(barRef);
-                        keyUp(a)
-                    }
-                    }
+                    // onKeyUp={(a) => {
+                    //     //a.preventDefault();
+                    //     // clicked({/*barRef*/ });
+
+                    //     // keyUp(barRef);
+                    //     // keyUp(a)
+                    // }
+                    // }
                     className="outline-none"
                     type="text"
                     placeholder='Filter By Name' />

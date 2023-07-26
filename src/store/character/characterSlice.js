@@ -3,9 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 export const characterSlice = createSlice({
     name: 'character',
     initialState: {
-        page: 0 ,
+        page: 1 ,
         charList: [],
-        findCh: [],
+        //findCh: [],
         finalPage:null,
         isLoading: false,
         search: '',

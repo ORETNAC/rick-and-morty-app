@@ -1,29 +1,26 @@
 import { rickAndMortyApi } from '@/api/rickAndMortiApi'
 import { startLoadingChars, setChars, setPage, clearList } from '@/store/character/'
-import { useSelector, useDispatch } from 'react-redux'
 
 
-export const getChars = (pageNumber = 0, charList = [], search = '', finalPage, species = '',gender = '', status = '') => {
+
+export const getChars = () => {
     return async (dispatch, getState) => {
-
+        const { page, charList, search, species, gender, status } = getState().characters
+        console.log(page)
         try {
             dispatch(startLoadingChars());
+            ///////////////////////////////////////////////////
             // console.log('thunk page:', pageNumber)
             // console.log('thunk search:', search)
             // console.log('thunk finalPage:', finalPage)
-            const resp = await rickAndMortyApi.get(`character/?page=${pageNumber}&name=${search}&species=${species}&gender=${gender}&status=${status}`);
-
-
+            ///////////////////////////////////////////////////
+            const resp = await rickAndMortyApi.get(`character/?page=${page}&name=${search}&species=${species}&gender=${gender}&status=${status}`);
             const allchs = [...charList, ...resp.data.results]
-
-            dispatch(setPage({ page: pageNumber }))
-
+            //dispatch(setPage({ page: page }))
             dispatch(setChars({ charList: allchs, finalPage: resp.data.info.next }));
-
 
             console.log(resp)
             //console.log(resp.data.info.next)
-
         } catch {
             console.error('no hay coincidencias en su busqueda')
             ///////Display del logo de carga/////////////////////////////////////////////
@@ -31,6 +28,26 @@ export const getChars = (pageNumber = 0, charList = [], search = '', finalPage, 
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const clearChars = () => {
     return async (dispatch, getState) => {

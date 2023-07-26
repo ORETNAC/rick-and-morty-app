@@ -55,7 +55,7 @@ export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getChars(page + 1, charList, search, finalPage, species));
+    dispatch(getChars());
   }, [])
 
 

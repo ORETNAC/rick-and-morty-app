@@ -10,7 +10,7 @@ const Cards = () => {
     //console.log(result);
 
     const dispatch = useDispatch();
-    const { page, charList = [], isLoading, search, finalPage ,species, gender,status } = useSelector(state => state.characters)
+    const { page, charList = [], isLoading, search, finalPage, species, gender, status } = useSelector(state => state.characters)
     console.log('finalPage', finalPage)
 
 
@@ -44,6 +44,9 @@ const Cards = () => {
     return (
         <>
             {
+
+
+
                 charList.map(char => (
                     <a key={char.id} href=''>
                         <div className='flex items-center justify-center w-max-w-card m-auto relative '>
@@ -58,23 +61,17 @@ const Cards = () => {
                     </a>
                 ))
             }
-            <button
+            {true && (<button
                 className='col-span-4'
                 disabled={isLoading}
                 onClick={(a) => {
-                    if (finalPage) {
-                        console.log('Cards final Page:', finalPage)
-                        //dispatch(setPage({ page: page + 1 }));
-                        dispatch(getChars(page + 1, charList, search, finalPage, species, gender, status));
-                        console.log('postOnclick', page)
-                    } else {
-                        console.log('finalPage es nulo', finalPage);
-                        //Deshablitar el botón--------------------------------///////////////////////////
-                    }
+                    dispatch(setPage({ page: page + 1 }));
+                    dispatch(getChars());
                 }}
             >
                 Load Mores
-            </button>
+            </button>)}
+
 
             <button
                 className='col-span-4'
