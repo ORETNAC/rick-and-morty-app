@@ -2,6 +2,7 @@ import { getChars } from "@/store/character";
 import Cards from "../components/Cards/Cards.js";
 import Filter from "../components/Filter/Filter.js";
 import Search from "../components/Search/Search.js";
+import { Nav } from "@/components/Layout/Nav.js";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -70,9 +71,9 @@ export default function Home() {
 
 
   return (
-    <main className="bg-gray-50 text-black min-h-screen">
+    <main className="bg-gray-50 text-black min-h-screen font-roboto">
       <div className='flex flex-col min-h-screen relative pb-14 '>
-        <header className='flex flex-col bg-white-600  items-center justify-start sm:flex-row sm:justify-start sm:relative sm:h-header sm:border-b  sm:shadow-sm'>
+        {/* <header className='flex flex-col bg-white-600  items-center justify-start sm:flex-row sm:justify-start sm:relative sm:h-header sm:border-b  sm:shadow-sm'>
           <nav className='flex justify-self-end '>
             <img
               src="/rick-morty-navbar.svg"
@@ -80,7 +81,8 @@ export default function Home() {
               className="h-11 w-12 sm:ml-52  "
             />
           </nav>
-        </header>
+        </header> */}
+        {/* <Nav></Nav> */}
         <main className="flex flex-col justify-center m-auto">
 
 
@@ -96,21 +98,12 @@ export default function Home() {
 
 
           <section className='mt-8 grid grid-cols-4 justify-center gap-4 '>
-
             {/* {!isLoading ? <div className=''><img src="/loading.svg" alt="" /></div> : <Cards />} */}
-
-
             <Cards />
-
-
-
           </section>
 
 
         </main>
-        <footer>
-
-        </footer>
       </div>
     </main>
   )

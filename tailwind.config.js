@@ -5,7 +5,21 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  //font-family: 'Karla', sans-serif;
+//font-family: 'Roboto', sans-serif;
   theme: {
+    fontFamily: {
+      'karla': [
+        'Karla',
+        'ui-sans-serif',
+        'system-ui',
+      ],
+      'roboto':[
+        'Roboto',
+        'ui-sans-serif',
+        'system-ui',
+      ]
+    },
     extend: {
       colors: {
         'detail-name': '#081F32'

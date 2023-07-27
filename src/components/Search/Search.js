@@ -81,12 +81,11 @@ const Search = () => {
                     disabled={isLoading}
                     onClick={(a) => {
                         a.preventDefault();
-                        // clicked({/*barRef*/ });
                         clicked(barRef);
                     }
                     }
                 >
-                    <AiOutlineSearch className="text-gray-500"></AiOutlineSearch>
+                    <AiOutlineSearch className="text-black contrast-50 h-6 w-6"></AiOutlineSearch>
                 </button>
 
                 {/* <button

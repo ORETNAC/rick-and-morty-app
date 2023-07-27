@@ -16,7 +16,7 @@ export const getChars = () => {
             ///////////////////////////////////////////////////
             const resp = await rickAndMortyApi.get(`character/?page=${page}&name=${search}&species=${species}&gender=${gender}&status=${status}`);
             const allchs = [...charList, ...resp.data.results]
-            //dispatch(setPage({ page: page }))
+            //dispatch(setPage({ page: page + 1 }))
             dispatch(setChars({ charList: allchs, finalPage: resp.data.info.next }));
 
             console.log(resp)

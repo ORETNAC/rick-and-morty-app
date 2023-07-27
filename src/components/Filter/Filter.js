@@ -12,7 +12,7 @@ const Filters = () => {
         console.log(event.target.value)
         dispatch(clearList());
         dispatch(setSpecies({ species: event.target.value }));
-        //dispatch(getChars( page,charList, isLoading,  ));
+        dispatch(getChars());
         //dispatch(getChars(page + 1, charList, search, finalPage, species, gender, status));
     }
 
@@ -20,14 +20,14 @@ const Filters = () => {
         console.log(event.target.value)
         dispatch(setGender({ gender: event.target.value }));
         dispatch(clearList());
-        //dispatch(getChars({ }));
+        dispatch(getChars());
     }
 
     const statusChangeValue = (event) => {
         console.log(event.target.value)
         dispatch(setStatus({ status: event.target.value }));
         dispatch(clearList());
-        //dispatch(getChars({ }));
+        dispatch(getChars());
     }
 
     return (
