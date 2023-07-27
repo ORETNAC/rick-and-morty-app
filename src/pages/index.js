@@ -50,12 +50,15 @@ export default function Home() {
 */}
   ///////////////////////////////////////////////////////////////
 
-  const { page, charList = [], search, finalPage, species } = useSelector(state => state.characters)
+  const { detailId, characterDetails } = useSelector(state => state.characters)
 
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('characterDetails', characterDetails)
+    if (detailId !== 0) return console.log('DetailID:',detailId)
+
     dispatch(getChars());
   }, [])
 

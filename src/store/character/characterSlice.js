@@ -3,10 +3,22 @@ import { createSlice } from '@reduxjs/toolkit';
 export const characterSlice = createSlice({
     name: 'character',
     initialState: {
-        page: 1 ,
-        charList: [],
-        //findCh: [],
-        finalPage:null,
+        page: 1,
+        charactersList: [],
+        detailId: 0,
+        characterDetails: {
+            id: 0,
+            name: '',
+            status: '',
+            spicie: '',
+            type: '',
+            gender: '',
+            origin:[],
+            location:[],
+            episode:[],
+        },
+        episodes: [],
+        finalPage: null,
         isLoading: false,
         search: '',
         species: '',
@@ -19,12 +31,26 @@ export const characterSlice = createSlice({
         },
         setChars: (state, action) => {
             state.isLoading = false;
-            state.charList = action.payload.charList;
+            console.log('thunk set Chars======>', action.payload.charactersList)
+            state.charactersList = action.payload.charactersList;
             state.finalPage = action.payload.finalPage;
             // state.page = action.payload.page;
         },
+        setDetailID: (state, action) => {
+            state.detailId = action.payload.detailId;
+        },
+        setDetails: (state, action) => {
+            console.log('thunk set Details======>', action.payload.characterDetails)
+            state.characterDetails = action.payload.characterDetails;
+            state.isLoading = false;
+        },
+        setEpisodes: (state, action) => {
+            console.log('thunk set Episodes======>', action.payload.characterDetails)
+            state.episodes = action.payload.episodes;
+            state.isLoading = false;
+        },
         clearList: (state, action) => {
-            state.charList = [];
+            state.charactersList = [];
             console.log('pagina', state.page);
             state.page = 1;
             console.log('borrado')
@@ -47,4 +73,4 @@ export const characterSlice = createSlice({
         }
     }
 });
-export const {setGender, setStatus, setSpecies, setSearch, setPage, startLoadingChars, setChars, clearList } = characterSlice.actions;
+export const { setDetailID, setEpisodes, setDetails, setGender, setStatus, setSpecies, setSearch, setPage, startLoadingChars, setChars, clearList } = characterSlice.actions;

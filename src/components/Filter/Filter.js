@@ -6,14 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Filters = () => {
     const dispatch = useDispatch();
-    const { page, charList = [], isLoading, search, finalPage ,species, gender,status } = useSelector(state => state.characters)
 
     const speciesChangeValue = (event) => {
         console.log(event.target.value)
         dispatch(clearList());
         dispatch(setSpecies({ species: event.target.value }));
         dispatch(getChars());
-        //dispatch(getChars(page + 1, charList, search, finalPage, species, gender, status));
     }
 
     const genderChangeValue = (event) => {
