@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
 
 
+
 const Filters = () => {
+    const { species, gender, status } = useSelector(state => state.characters)
     const dispatch = useDispatch();
 
     const speciesChangeValue = (event) => {
@@ -31,7 +33,8 @@ const Filters = () => {
     return (
         <>
 
-            <select onChange={speciesChangeValue} placeholder='Species' id="species" className='className="flex justify-center w-max-w-card border border-gray-500 rounded-md h-14 items-center"'>
+            <select onChange={speciesChangeValue} placeholder='Species' id="species" className='className="flex justify-center w-max-w-card border border-gray-500 rounded-md h-14 items-center"'
+                value={species}>
                 <option value="">Species:</option>
                 <option value="alien">Alien</option>
                 <option value="animal">Animal</option>
@@ -45,7 +48,8 @@ const Filters = () => {
                 <option value="unknown">Unknown</option>
             </select>
 
-            <select onChange={genderChangeValue} placeholder='Gender' id="gender" className='className="flex justify-center w-max-w-card border border-gray-500 rounded-md h-14 items-center"'>
+            <select onChange={genderChangeValue} placeholder='Gender' id="gender" className='className="flex justify-center w-max-w-card border border-gray-500 rounded-md h-14 items-center"'
+                value={gender}>
                 <option value="">Gender:</option>
                 <option value="female">Female</option>
                 <option value="genderless">Genderless</option>
@@ -53,7 +57,8 @@ const Filters = () => {
                 <option value="unknown">Unknown</option>
             </select>
 
-            <select onChange={statusChangeValue} placeholder='Status' id="status" className='className="flex justify-center w-max-w-card border border-gray-500 rounded-md h-14 items-center"'>
+            <select onChange={statusChangeValue} placeholder='Status' id="status" className='className="flex justify-center w-max-w-card border border-gray-500 rounded-md h-14 items-center"'
+                value={status}>
                 <option value="">Status:</option>
                 <option value="alive">Alive</option>
                 <option value="dead">Dead</option>

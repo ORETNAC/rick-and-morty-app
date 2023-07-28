@@ -8,13 +8,9 @@ import { clearList, setSearch } from "@/store/character";
 
 
 const Search = () => {
-    const barRef = useRef('hey');
 
     const { page, charList = [], isLoading, search } = useSelector(state => state.characters)
     const dispatch = useDispatch();
-
-
-
 
     const inputChange = (a) => {
         //console.log('valor de a:', a.target.value)
@@ -23,8 +19,6 @@ const Search = () => {
         console.log('inputChange', search)
         dispatch(getChars())
     }
-
-
 
     return (
         <>
@@ -39,15 +33,12 @@ const Search = () => {
                 >
                     <AiOutlineSearch className="text-black contrast-50 h-6 w-6"></AiOutlineSearch>
                 </button>
-
                 <input
-                    ref={barRef}
                     onChange={inputChange}
+                    value={search}
                     className="outline-none"
                     type="text"
                     placeholder='Filter By Name' />
-
-
             </form>
         </>
     )

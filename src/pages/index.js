@@ -12,43 +12,7 @@ let results = [];
 let tempFix = 0;
 
 export default function Home() {
-  {/** 
-  let [pageNumber, setPageNumber] = useState(1);
-  let [fetchData, updateFetchData] = useState([]);
-  let [allCards, setAllCards] = useState([]);
 
-  let [search, setSearch] = useState('');
-  let [status, setStatus] = useState('')
-  let [species, setSpicies] = useState('')//'alien' 'human' 'humanoid' 'robot' 'animal''Cronenberg' 'unknown' 'Mythological Creature' 'Poopybutthole' 'Disease'
-  let [gender, setGender] = useState('');//'genderless' 'male' 'female' 'unknown'
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&species=${species}&gender=${gender}`;
-*/}
-
-
-
-
-
-
-  ////////////////////////////////////////////////////////////////
-
-  {/*
-  useEffect(() => {
-    (async function () {
-      let data = await fetch(api).then(res => res.json());
-      updateFetchData(data);
-      results = data.results;
-
-      if (tempFix < 1) {
-        tempFix++;
-        //console.log('----------------TempFix----------------:', tempFix);
-      } else {
-        setAllCards(prevCards => [...prevCards, ...results]);
-      }
-
-    })();
-  }, [api]);
-*/}
-  ///////////////////////////////////////////////////////////////
 
   const { detailId, characterDetails } = useSelector(state => state.characters)
 
@@ -61,14 +25,6 @@ export default function Home() {
 
     dispatch(getChars());
   }, [])
-
-
-
-  // info = fetchData.info;
-
-  // console.log('AllCards', allCards)
-  // console.log('results', results)
-  // console.log('info', info)
 
 
 
