@@ -127,13 +127,13 @@ const Details = () => {
     )
 }
 
-// export const getServerSideProps = async ({ query }) => {
-//     console.log('query:', query)
-//     return {
-//         props: {
+export const getServerSideProps = async ({ query }) => {
+    // console.log('query:', query)
+    return {
+        props: {
 
-//         }
-//     }
-// }
+        }
+    }
+}
 
 export default Details
