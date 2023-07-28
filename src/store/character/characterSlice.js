@@ -13,9 +13,9 @@ export const characterSlice = createSlice({
             spicie: '',
             type: '',
             gender: '',
-            origin:[],
-            location:[],
-            episode:[],
+            origin: [],
+            location: [],
+            episode: [],
         },
         episodes: [],
         finalPage: null,
@@ -31,30 +31,38 @@ export const characterSlice = createSlice({
         },
         setChars: (state, action) => {
             state.isLoading = false;
-            console.log('thunk set Chars======>', action.payload.charactersList)
             state.charactersList = action.payload.charactersList;
             state.finalPage = action.payload.finalPage;
-            // state.page = action.payload.page;
         },
         setDetailID: (state, action) => {
             state.detailId = action.payload.detailId;
         },
         setDetails: (state, action) => {
-            console.log('thunk set Details======>', action.payload.characterDetails)
             state.characterDetails = action.payload.characterDetails;
             state.isLoading = false;
         },
         setEpisodes: (state, action) => {
-            console.log('thunk set Episodes======>', action.payload.characterDetails)
             state.episodes = action.payload.episodes;
             state.isLoading = false;
         },
+        clearDetails: (state, action) => {
+            state.detailId = 999;
+            state.characterDetails = {
+                id: 0,
+                name: '',
+                status: '',
+                spicie: '',
+                type: '',
+                gender: '',
+                origin: [],
+                location: [],
+                episode: [],
+            },
+                state.episodes = [];
+        },
         clearList: (state, action) => {
             state.charactersList = [];
-            console.log('pagina', state.page);
             state.page = 1;
-            console.log('borrado')
-            console.log('pagina', state.page);
         },
         setPage: (state, action) => {
             state.page = action.payload.page
@@ -73,4 +81,4 @@ export const characterSlice = createSlice({
         }
     }
 });
-export const { setDetailID, setEpisodes, setDetails, setGender, setStatus, setSpecies, setSearch, setPage, startLoadingChars, setChars, clearList } = characterSlice.actions;
+export const { clearDetails, setDetailID, setEpisodes, setDetails, setGender, setStatus, setSpecies, setSearch, setPage, startLoadingChars, setChars, clearList } = characterSlice.actions;

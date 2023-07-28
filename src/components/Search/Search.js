@@ -16,7 +16,6 @@ const Search = () => {
         //console.log('valor de a:', a.target.value)
         dispatch(clearList())
         dispatch(setSearch({ search: a.target.value }));
-        console.log('inputChange', search)
         dispatch(getChars())
     }
 

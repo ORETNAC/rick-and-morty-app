@@ -10,21 +10,18 @@ const Filters = () => {
     const dispatch = useDispatch();
 
     const speciesChangeValue = (event) => {
-        console.log(event.target.value)
         dispatch(clearList());
         dispatch(setSpecies({ species: event.target.value }));
         dispatch(getChars());
     }
 
     const genderChangeValue = (event) => {
-        console.log(event.target.value)
         dispatch(setGender({ gender: event.target.value }));
         dispatch(clearList());
         dispatch(getChars());
     }
 
     const statusChangeValue = (event) => {
-        console.log(event.target.value)
         dispatch(setStatus({ status: event.target.value }));
         dispatch(clearList());
         dispatch(getChars());

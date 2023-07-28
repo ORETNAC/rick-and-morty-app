@@ -1,5 +1,5 @@
 import { rickAndMortyApi } from '@/api/rickAndMortiApi'
-import { startLoadingChars, setChars, setPage, clearList, setDetails, setEpisodes } from '@/store/character/'
+import { startLoadingChars, setChars, setPage, clearList, setDetails, setEpisodes, clearDetails } from '@/store/character/'
 
 
 
@@ -38,17 +38,26 @@ export const getDetails = () => {
 
 export const getEpisodes = () => {
     return async (dispatch, getState) => {
-        const { episodes, characterDetails } = getState().characters
+        const { episodes, characterDetails,  } = getState().characters
         // console.log("Ejecutando el segundo thunk");
         let epi = [];
         try {
-            for (let i = 0; i < characterDetails.episode.length; i++) {
+            let i = 0;
+            while (i < characterDetails.episode.length) {
                 const url = characterDetails.episode[i];
                 const parts = url.split('/');
                 const lastPart = parts[parts.length - 1];
                 const resp = await rickAndMortyApi.get(`episode/${lastPart}`);
-                epi.push(resp.data)
+                epi.push(resp.data);
                 dispatch(setEpisodes({ episodes: [...epi] }));
+                i++;
+                const {detailId} = getState().characters
+                if(detailId===999){
+                    //
+                    break;
+                }
+
+                // dispatch(clearDetails());
             }
 
         } catch {

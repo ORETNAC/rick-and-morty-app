@@ -2,27 +2,20 @@ import { getChars } from "@/store/character";
 import Cards from "../components/Cards/Cards.js";
 import Filter from "../components/Filter/Filter.js";
 import Search from "../components/Search/Search.js";
-import { Nav } from "@/components/Layout/Nav.js";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 
-let info;
-let results = [];
-let tempFix = 0;
 
 export default function Home() {
 
 
-  const { detailId, characterDetails } = useSelector(state => state.characters)
-
+  const { detailId, charactersList } = useSelector(state => state.characters)
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('characterDetails', characterDetails)
-    if (detailId !== 0) return console.log('DetailID:',detailId)
-
+    if (charactersList.length > 0) return
     dispatch(getChars());
   }, [])
 
@@ -30,40 +23,27 @@ export default function Home() {
 
 
   return (
-    <main className="bg-gray-50 text-black min-h-screen font-roboto">
+    <>
+    <main className="bg-gray-50 text-black min-w-full min-h-screen font-roboto">
       <div className='flex flex-col min-h-screen relative pb-14 '>
-        {/* <header className='flex flex-col bg-white-600  items-center justify-start sm:flex-row sm:justify-start sm:relative sm:h-header sm:border-b  sm:shadow-sm'>
-          <nav className='flex justify-self-end '>
-            <img
-              src="/rick-morty-navbar.svg"
-              alt="rick and morty navbar icon"
-              className="h-11 w-12 sm:ml-52  "
-            />
-          </nav>
-        </header> */}
-        {/* <Nav></Nav> */}
         <main className="flex flex-col justify-center m-auto">
 
-
-          <div className="sm:flex sm:justify-center">
-            <img src="/logo.svg" alt="Logo" className=" sm:h-logo sm:w-logo sm:mt-6 " />
+          <div className="lg:flex lg:justify-center">
+            <img src="/logo.svg" alt="Logo" className=" lg:h-logo lg:w-logo lg:mt-6 " />
           </div>
 
-          <section className="mt-8 grid grid-cols-4 justify-center gap-4">
+          <section className="mt-8 flex flex-col mx-auto gap-2 lg:grid lg:grid-cols-4 lg:justify-center lg:gap-4 lg:mx-0">
             <Search></Search>
             <Filter></Filter>
           </section>
 
-
-
-          <section className='mt-8 grid grid-cols-4 justify-center gap-4 '>
-            {/* {!isLoading ? <div className=''><img src="/loading.svg" alt="" /></div> : <Cards />} */}
+          <section className='flex flex-col mx-auto gap-4 mt-8 w-full lg:grid lg:grid-cols-4 lg:justify-center  '>
             <Cards />
           </section>
-
 
         </main>
       </div>
     </main>
+    </>
   )
 }
