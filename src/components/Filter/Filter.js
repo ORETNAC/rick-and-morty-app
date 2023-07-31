@@ -29,6 +29,10 @@ const Filters = () => {
 
     return (
         <>
+            {/* <button className="flex justify-center bg-blue-100 text-center w-max-w-card border text-blue-400 font-semibold shadow-xl rounded-sm h-14 items-center" >
+                <img src="/filter.svg" alt="modal filter icon" />
+                <p className="">ADVANCED FILTERS</p>
+            </button> */}
 
             <select onChange={speciesChangeValue} placeholder='Species' id="species" className='className="flex justify-center w-max-w-card border border-gray-500 rounded-md h-14 items-center"'
                 value={species}>

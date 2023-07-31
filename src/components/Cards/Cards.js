@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { getChars, setPage } from '@/store/character';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +30,8 @@ const Cards = () => {
                         </div> */}
                         <div className='flex items-center justify-center w-max-w-card m-auto relative '>
                             <div className='border overflow-hidden shadow-xl'>
-                                <img className='mx-auto' alt={char.name} src={char.image}></img>
+                                {/* <img className='mx-auto' alt={char.name} src={char.image}></img> */}
+                                <Image width={300} height={300}  className='mx-auto' alt={char.name} src={char.image}></Image>
                                 <div className='px-6 py-4'>
                                     <h3 className='text-xl font-bold overflow-hidden whitespace-nowrap '>{char.name}</h3>
                                     <p className='text-base font-normal '>{char.species}</p>
@@ -41,7 +43,7 @@ const Cards = () => {
             }
 
             {localFinalPage === null ? null : (<button
-                className='col-span-4 border mx-auto w-40 h-9 text-blue-500 font-medium shadow-xl backdrop-blur-sm'
+                className='mx-auto w-40 h-9 text-blue-500 font-medium shadow-xl backdrop-blur-sm border sm:col-span-2  md:col-span-3 lg:col-span-4 '
                 onClick={(a) => {
                     dispatch(setPage({ page: page + 1 }));
                     dispatch(getChars());

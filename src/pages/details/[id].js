@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link';///
 import { getDetails, getEpisodes, setDetailID, clearDetails } from '@/store/character';
 import { useEffect, useState } from 'react';
-
+import Image from 'next/image'
 
 const Details = () => {
     const { characterDetails, episodes, isLoading } = useSelector(state => state.characters);
@@ -14,6 +14,7 @@ const Details = () => {
     // console.log(router.query.id)
     const id = router.query.id;
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(setDetailID({ detailId: id }))
         dispatch(getDetails());
@@ -33,7 +34,7 @@ const Details = () => {
         <>
             <main className="bg-gray-50 text-black min-h-screen font-roboto">
 
-                <Link onClick={clickClear} className='flex items-center ml-52 mt-11' href='/'>
+                <Link onClick={clickClear} className='flex items-center mt-11 sm: ml-6 md:ml-52 ' href='/'>
                     <img src="/backArrow.svg" alt="Logo" className=" sm:h-6 sm:w-6 " />
                     <h3 className='font-karla text-lg font-bold'>GO BACK</h3>
                 </Link>
@@ -41,13 +42,13 @@ const Details = () => {
                     <div className='flex flex-col min-h-screen relative pb-14 '>
                         <main className=" top-0 flex flex-col justify-center mx-auto">
                             <article className='relative top-0'>
-                                <div className="text-center p-4">
-                                    <div className="relative mx-auto w-detail-img h-detail-img ">
-                                        <img className=' rounded-full' src={characterDetails.image} alt="rick" />
+                                <div className="flex flex-col text-center justify-center p-4">
+                                    <div className="relative mx-auto  w-36 h-36 sm:w-48 sm:h-48 md:w-60 md:h-60 lg:w-detail-img lg:h-detail-img ">
+                                        <img className=' rounded-full' src={characterDetails.image} alt={characterDetails.name} />
                                     </div>
                                     <h2 className="mt-4 text-3xl text-detail-name font-semibold">{characterDetails.name}</h2>
                                 </div>
-                                <aside className='flex justify-between mx-auto' >
+                                <aside className='md:flex md:justify-between md:mx-auto' >
                                     <div>
                                         <h3 className='text-gray-400 text-xl font-thin'>Informations</h3>
                                         <ul className='ml-5 mt-9 w-96'>
